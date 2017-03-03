@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from "../users/user";
+import {AngularFire} from "angularfire2";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'cp-home',
@@ -8,12 +10,13 @@ import {User} from "../users/user";
 })
 export class HomeComponent implements OnInit {
   toolbarTitle = 'CP2';
-  users: User[];
+  users: Observable<User[]>;
 
-  constructor() {
+  constructor(private af : AngularFire) {
   }
 
   ngOnInit() {
+    this.af.database.list('/users');
   }
 
 }
