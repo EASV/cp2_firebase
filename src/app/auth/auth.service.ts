@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-import {User} from "../users/user";
-import {Observable} from "rxjs";
 
 @Injectable()
 export class AuthService {
