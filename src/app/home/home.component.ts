@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.af.database.list('/users');
+    this.users = this.af.database.list('/users');
   }
 
 }
