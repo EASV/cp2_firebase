@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {MdSnackBar} from '@angular/material';
 import {AuthService} from "../auth.service";
 import {Subscription, Observable} from "rxjs";
+import {AuthUser} from "../auth-user";
 
 @Component({
   selector: 'cp-login',
@@ -20,13 +21,13 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.auth.logout();
   }
 
-  login(user) {
+  login(user : AuthUser) {
     this.tryingToLogIn = true;
     if (this.request) {
       this.request.unsubscribe();
     }
     this.request = this.auth
-      .login(user.username, user.password)
+      .login(user.password, user.password)
       .delay(1000)
       .subscribe(
         //Is the data

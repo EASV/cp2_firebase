@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {AuthUser} from "../auth-user";
 
 @Component({
   selector: 'cp-login-view',
@@ -6,8 +7,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['login-view.component.css']
 })
 export class LoginViewComponent implements OnInit {
-  @Input()
-  user : any;
+  user : AuthUser;
 
   @Input()
   signInError : string;
@@ -16,14 +16,14 @@ export class LoginViewComponent implements OnInit {
   tryingToLogIn: boolean;
 
   @Output('login')
-  tryLoginEmitter = new EventEmitter();
+  tryLoginEmitter = new EventEmitter<AuthUser>();
 
   tryLogin(){
     this.tryLoginEmitter.emit(this.user);
   }
 
   constructor() {
-    this.user = {};
+    this.user = new AuthUser();
   }
 
   ngOnInit() {
