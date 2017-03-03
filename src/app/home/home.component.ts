@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Observable} from "rxjs";
+import {User} from "../users/user";
 
 @Component({
   selector: 'cp-home',
@@ -8,6 +8,7 @@ import {Observable} from "rxjs";
 })
 export class HomeComponent implements OnInit {
   toolbarTitle = 'CP2';
+  users: User[];
 
   constructor() {
   }

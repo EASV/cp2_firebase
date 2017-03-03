@@ -7,6 +7,7 @@ import { MaterialModule } from '@angular/material';
 import { RouterModule, Routes } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import 'hammerjs';
+import { AngularFireModule } from 'angularfire2';
 
 import { AppComponent } from './app.component';
 import { TopToolbarComponent } from './top-toolbar/top-toolbar.component';
@@ -14,6 +15,14 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './auth/login/login.component';
 import { LoginViewComponent } from './auth/login/login-view.component';
 import {AuthService} from "./auth/auth.service";
+
+export const firebaseConfig = {
+  apiKey: "AIzaSyCnLMPbw7RLqpVSUj_o-6ibQuGAEvfyqac",
+  authDomain: "cp2rest.firebaseapp.com",
+  databaseURL: "https://cp2rest.firebaseio.com",
+  storageBucket: "cp2rest.appspot.com",
+  messagingSenderId: "646091707432"
+};
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -35,7 +44,8 @@ const appRoutes: Routes = [
     Angular2FontawesomeModule,
     MaterialModule,
     FlexLayoutModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    AngularFireModule.initializeApp(firebaseConfig)
   ],
   providers: [
     AuthService
