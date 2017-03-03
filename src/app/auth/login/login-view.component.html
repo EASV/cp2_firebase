@@ -1,0 +1,44 @@
+<div fxFlexFill [fxLayout]="'column'">
+  <button md-mini-fab routerLink="/">
+    <fa [name]="'arrow-left'"></fa>
+  </button>
+  <div fxFlexFill [fxLayout]="'row'" fxLayoutAlign="center center">
+    <md-card style="margin: 0;width: 200px;">
+      <div *ngIf="!tryingToLogIn">
+        <fa [name]="'lock'"></fa>
+        Login
+        <p *ngIf="signInError && signInError.length > 0"
+           class="error-message">
+          <fa [name]="'exclamation-circle'"></fa>
+          {{signInError}}
+        </p>
+        <form (ngSubmit)="tryLogin($event)">
+          <md-card-content>
+            <md-input-container>
+              <input mdInput
+                     placeholder="Username"
+                     name="userName"
+                     [(ngModel)]="user.username">
+            </md-input-container>
+            <md-input-container>
+              <input mdInput
+                     placeholder="Password"
+                     name="password"
+                     type="password"
+                     [(ngModel)]="user.password">
+            </md-input-container>
+
+          </md-card-content>
+          <md-card-actions class="example-button-row">
+            <button type="button" class="login-button" md-button routerLink="/lostPassword">Lost password</button>
+            <button type="submit" md-raised-button color="primary">Sign in</button>
+          </md-card-actions>
+        </form>
+      </div>
+      <div *ngIf="tryingToLogIn" fxFlexFill [fxLayout]="'column'" fxLayoutAlign="center center">
+        <h3><fa [name]="'handshake-o'"></fa> We are login in, thanks for your patience</h3>
+        <h3><md-spinner></md-spinner></h3>
+      </div>
+    </md-card>
+  </div>
+</div>

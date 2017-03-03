@@ -1,0 +1,23 @@
+<md-toolbar color="primary">
+  <button md-button routerLink="/"><fa [name]="'beer'" size=2></fa> {{title}}</button>
+
+  <!-- This fills the remaining space of the current row -->
+  <span class="example-fill-remaining-space"></span>
+
+  <button *ngIf="!user" md-button routerLink="/login">Sign in <fa [name]="'sign-in'" size=1></fa></button>
+  <button *ngIf="user" md-icon-button [mdMenuTriggerFor]="menu">
+    <fa [name]="'ellipsis-v'"></fa>
+  </button>
+  <md-menu #menu="mdMenu">
+    <button md-menu-item disabled>
+      <fa [name]="'user'" size=1></fa>
+      <span>{{user?.username}}</span>
+    </button>
+    <button md-menu-item (click)="logout()">
+      <fa [name]="'sign-out'" size=1></fa>
+      <span>Sign out</span>
+    </button>
+  </md-menu>
+
+</md-toolbar>
+
