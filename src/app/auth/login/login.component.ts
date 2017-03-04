@@ -45,13 +45,11 @@ export class LoginComponent implements OnInit, OnDestroy {
         },
         //Error handling
         (err) => {
-          console.error(err);
           this.loginError = "An error occoured during login, see error in console";
           this.tryingToLogIn = false;
         },
         //Observable Done
         () => {
-          console.log("Done!");
           this.tryingToLogIn = false;
         }
       );

@@ -4,6 +4,7 @@ import {auditTime} from "rxjs/operator/auditTime";
 import {User} from "../users/user";
 import {MdSnackBar} from "@angular/material";
 import {Router} from "@angular/router";
+import {FirebaseAuthState} from "angularfire2";
 
 @Component({
   selector: 'cp-top-toolbar',
@@ -14,12 +15,12 @@ export class TopToolbarComponent implements OnInit {
   @Input()
   title : string;
 
-  user: User;
+  user: FirebaseAuthState;
 
   constructor(private auth: AuthService,
               public loginValidationBar: MdSnackBar,
               private router: Router) {
-    this.user = auth.currentUser();
+
   }
 
   logout(){
@@ -32,6 +33,9 @@ export class TopToolbarComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.auth.currentUser().subscribe(user => {
+      this.user = user;
+    })
   }
 
 }

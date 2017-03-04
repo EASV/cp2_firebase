@@ -14,8 +14,8 @@ export class AuthService {
     return Observable.fromPromise(promise);
   }
 
-  currentUser(){
-    return JSON.parse(localStorage.getItem('currentUser'));
+  currentUser() : Observable<FirebaseAuthState>{
+    return this.af.auth;
   }
 
   logout(){
