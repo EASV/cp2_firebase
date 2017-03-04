@@ -18,7 +18,6 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(public loginValidationBar: MdSnackBar,
               private router: Router,
               private auth: AuthService) {
-    this.auth.logout();
   }
 
   login(user : AuthUser) {
