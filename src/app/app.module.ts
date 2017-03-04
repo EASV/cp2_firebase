@@ -7,7 +7,7 @@ import { MaterialModule } from '@angular/material';
 import { RouterModule, Routes } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import 'hammerjs';
-import { AngularFireModule } from 'angularfire2';
+import {AngularFireModule, AuthProviders, AuthMethods} from 'angularfire2';
 
 import { AppComponent } from './app.component';
 import { TopToolbarComponent } from './top-toolbar/top-toolbar.component';
@@ -23,6 +23,11 @@ export const firebaseConfig = {
   storageBucket: "cp2rest.appspot.com",
   messagingSenderId: "646091707432"
 };
+
+export const firebarebaseLoginConfig =  {
+    provider: AuthProviders.Password,
+    method: AuthMethods.Password
+}
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -45,7 +50,7 @@ const appRoutes: Routes = [
     MaterialModule,
     FlexLayoutModule,
     RouterModule.forRoot(appRoutes),
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig, firebarebaseLoginConfig)
   ],
   providers: [
     AuthService
