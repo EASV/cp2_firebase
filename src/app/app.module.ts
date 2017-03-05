@@ -15,6 +15,8 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './auth/login/login.component';
 import { LoginViewComponent } from './auth/login/login-view.component';
 import {AuthService} from "./auth/auth.service";
+import {UserService} from "./users/user.service";
+import {AuthGuard} from "./auth/auth-guard";
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCnLMPbw7RLqpVSUj_o-6ibQuGAEvfyqac",
@@ -30,7 +32,7 @@ export const firebarebaseLoginConfig =  {
 }
 
 const appRoutes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent, canActivate: [AuthGuard]},
   { path: 'login', component: LoginComponent }
 ];
 
@@ -53,7 +55,9 @@ const appRoutes: Routes = [
     AngularFireModule.initializeApp(firebaseConfig, firebarebaseLoginConfig)
   ],
   providers: [
-    AuthService
+    AuthService,
+    UserService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
