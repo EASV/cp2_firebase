@@ -19,6 +19,7 @@ import {UserService} from "./users/user.service";
 import {AuthGuard} from "./auth/auth-guard";
 import { UsersComponent } from './users/users/users.component';
 import { UserListComponent } from './users/user-list/user-list.component';
+import { UserComponent } from './users/user/user.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCnLMPbw7RLqpVSUj_o-6ibQuGAEvfyqac",
@@ -47,7 +48,8 @@ const appRoutes: Routes = [
     LoginComponent,
     LoginViewComponent,
     UsersComponent,
-    UserListComponent
+    UserListComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

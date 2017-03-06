@@ -11,3 +11,7 @@ body { position:absolute; top:0; bottom:0; right:0; left:0; }
   color: darkred;
   font-size: x-small;
 }
+
+md-card{
+  margin: 2em;
+}
