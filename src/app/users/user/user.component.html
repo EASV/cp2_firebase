@@ -1,4 +1,4 @@
-<md-card>
+<md-card style="min-height: 8em">
   <md-card-content [fxLayout]="'row'">
     <div fxFlex="4em"><fa [name]="'user'" [size]=4></fa></div>
     <div fxFlex>
@@ -6,13 +6,7 @@
       <h4>{{user?.email}}</h4>
     </div>
     <div fxFlex="3em" [fxFlexAlign]="'end'" [fxLayout]="'column'">
-      <button [color]="'primary'" md-icon-button >
-        <fa [name]="'info'" ></fa>
-      </button>
-      <button [color]="'accent'" md-icon-button >
-        <fa [name]="'edit'" ></fa>
-      </button>
-      <button [color]="'warn'" md-icon-button>
+      <button [color]="'warn'" md-icon-button (click)="delete()">
         <fa [name]="'trash'" ></fa>
       </button>
     </div>
