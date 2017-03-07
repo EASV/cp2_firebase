@@ -22,4 +22,8 @@ export class UserListComponent implements OnInit {
     this.userService.deleteUser($key);
   }
 
+  createUserClicked(){
+
+  }
+
 }
