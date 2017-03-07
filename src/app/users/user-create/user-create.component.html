@@ -1,0 +1,32 @@
+<form *ngIf="creatingUser" class="example-form" (ngSubmit)="onSubmit()">
+  <md-card>
+    <md-card-content>
+      <h3><fa [name]="'user'"></fa> Add User</h3>
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <md-input-container class="example-full-width">
+              <input mdInput placeholder="Username">
+            </md-input-container>
+          </td>
+          <td>
+            <md-input-container class="example-full-width">
+              <input mdInput placeholder="Email">
+            </md-input-container>
+          </td>
+          <button type="button" md-icon-button [color]="'primary'" (click)="creatingNewUser(false)">
+            <fa [name]="'floppy-o'"></fa>
+          </button>
+          <button type="button" md-icon-button [color]="'warn'" (click)="creatingNewUser(false)">
+            <fa [name]="'ban'"></fa>
+          </button>
+        </tr>
+      </table>
+    </md-card-content>
+  </md-card>
+</form>
+<div *ngIf="!creatingUser">
+  <button md-icon-button [color]="'primary'" (click)="creatingNewUser(true)">
+    <fa [name]="'plus'"></fa>
+  </button>
+</div>
