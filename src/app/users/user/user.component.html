@@ -5,9 +5,18 @@
       <h3>{{user?.username}}</h3>
       <h4>{{user?.email}}</h4>
     </div>
-    <div fxFlex="3em" [fxFlexAlign]="'end'" [fxLayout]="'column'">
-      <button [color]="'warn'" md-icon-button (click)="delete()">
+    <div *ngIf="!validateDelete" fxFlex="3em" [fxFlexAlign]="'end'" [fxLayout]="'column'">
+      <button [color]="'warn'" md-icon-button (click)="deleteValidation(true)">
         <fa [name]="'trash'" ></fa>
+      </button>
+    </div>
+    <div *ngIf="validateDelete" fxFlex="3em" [fxFlexAlign]="'end'" [fxLayout]="'column'">
+      <h4>Are you sure?</h4>
+      <button [color]="'primary'" md-icon-button (click)="deleteValidation(false)">
+        <fa [name]="'thumbs-o-down'" ></fa>
+      </button>
+      <button [color]="'warn'" md-icon-button (click)="delete()">
+        <fa [name]="'thumbs-o-up'" ></fa>
       </button>
     </div>
   </md-card-content>

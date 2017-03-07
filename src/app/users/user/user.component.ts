@@ -14,12 +14,19 @@ export class UserComponent implements OnInit {
   @Output()
   deleteUserEvent = new EventEmitter<string>();
 
+  validateDelete: boolean;
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  deleteValidation(value : boolean){
+    this.validateDelete = value;
+  }
+
   delete(){
+    this.validateDelete = false;
     this.deleteUserEvent.emit(this.user.$key);
   }
 
