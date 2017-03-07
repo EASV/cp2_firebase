@@ -9,9 +9,10 @@ export class UserService {
   constructor(private af : AngularFire) { }
 
   getUsers() : Observable<User[]>{
-    this.af.database.list('users').subscribe(users => {
-      console.log('users: ', users);
-    })
     return this.af.database.list('users');
+  }
+
+  deleteUser($key : string){
+    this.af.database.list('users').remove($key);
   }
 }
