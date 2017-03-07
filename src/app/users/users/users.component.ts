@@ -25,4 +25,8 @@ export class UsersComponent implements OnInit {
     this.creatingUser = value;
   }
 
+  createUser(user){
+    console.log('user', user);
+  }
+
 }

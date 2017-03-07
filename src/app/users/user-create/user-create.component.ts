@@ -1,4 +1,5 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {User} from "../user";
 
 @Component({
   selector: 'cp-user-create',
@@ -10,9 +11,15 @@ export class UserCreateComponent implements OnInit {
   @Output()
   creatingUserEvent = new EventEmitter<boolean>();
 
-  creatingUser : boolean;
+  @Output()
+  createUserEvent = new EventEmitter<User>();
 
-  constructor() { }
+  creatingUser : boolean;
+  user : User;
+
+  constructor() {
+    this.user = new User();
+  }
 
   ngOnInit() {
   }
@@ -23,6 +30,6 @@ export class UserCreateComponent implements OnInit {
   }
 
   onSubmit(){
-
+    this.createUserEvent.emit(this.user);
   }
 }

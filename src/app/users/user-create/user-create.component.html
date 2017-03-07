@@ -6,15 +6,21 @@
         <tr>
           <td>
             <md-input-container class="example-full-width">
-              <input mdInput placeholder="Username">
+              <input mdInput
+                     placeholder="Username"
+                     [(ngModel)]="user.username"
+                     name="username">
             </md-input-container>
           </td>
           <td>
             <md-input-container class="example-full-width">
-              <input mdInput placeholder="Email">
+              <input mdInput
+                     placeholder="Email"
+                     [(ngModel)]="user.email"
+                     name="email">
             </md-input-container>
           </td>
-          <button type="button" md-icon-button [color]="'primary'" (click)="creatingNewUser(false)">
+          <button type="submit" md-icon-button [color]="'primary'">
             <fa [name]="'floppy-o'"></fa>
           </button>
           <button type="button" md-icon-button [color]="'warn'" (click)="creatingNewUser(false)">
