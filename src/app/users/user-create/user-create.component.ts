@@ -18,7 +18,7 @@ export class UserCreateComponent implements OnInit {
   user : User;
 
   constructor() {
-    this.user = new User();
+    this.clear();
   }
 
   ngOnInit() {
@@ -31,5 +31,13 @@ export class UserCreateComponent implements OnInit {
 
   onSubmit(){
     this.createUserEvent.emit(this.user);
+    this.creatingUser = false;
+    this.clear();
   }
+
+  clear(){
+    this.user = new User();
+  }
+
+
 }

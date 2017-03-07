@@ -12,6 +12,10 @@ export class UserService {
     return this.af.database.list('users');
   }
 
+  createUser(user: User){
+    this.af.database.list('users').push(user);
+  }
+
   deleteUser($key : string){
     this.af.database.list('users').remove($key);
   }
