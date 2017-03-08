@@ -1,64 +1,110 @@
 <form *ngIf="creatingUser"
       class="example-form"
-      (ngSubmit)="onSubmit()"
-      #userForm="ngForm">
+      (ngSubmit)="onSubmit(userForm)"
+      #userForm="ngForm"
+      fxFlexFill [fxLayout]="'row'"
+      fxLayoutAlign="center start">
   <md-card>
-    <md-card-content>
-      <h3><fa [name]="'user'"></fa> Add User</h3>
-      <table class="example-full-width" cellspacing="0">
-        <tr>
-          <td>
-            <md-input-container class="example-full-width">
-              <input mdInput
-                     required
-                     placeholder="Username"
-                     [(ngModel)]="user.username"
-                     name="username"
-                     #username="ngModel">
-              <md-hint
-                *ngIf="!username.pristine && username.errors && username.errors.required"
-                [ngStyle]="{'color': 'red'}"
-                align="start">
-                Username required
-              </md-hint>
-            </md-input-container>
+    <md-card-content  [fxLayout]="'column'" fxFlex="400px">
+      <h3><fa [name]="'user'"></fa> Create User</h3>
+      <md-input-container >
+        <input mdInput
+               fxFlex="100"
+               required
+               minlength="3"
+               placeholder="Username"
+               [(ngModel)]="user.username"
+               name="username"
+               #username="ngModel">
+        <md-hint
+          *ngIf="!username.pristine && username.errors?.required"
+          [ngStyle]="{'color': 'red'}"
+          align="start">
+          Username required
+        </md-hint>
+        <md-hint
+          *ngIf="!username.pristine && username.errors?.minlength"
+          [ngStyle]="{'color': 'red'}"
+          align="start">
+          Username to short (min. 3 characters)
+        </md-hint>
+      </md-input-container>
+      <md-input-container >
+        <input name="email" #email="ngModel" mdInput id="email"
+               required
 
-          </td>
-          <td>
-            <md-input-container class="example-full-width">
-              <input name="email" #email="ngModel" mdInput id="email"
-                     required
-                     pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
-                     placeholder="Email"
-                     [(ngModel)]="user.email">
-              <md-hint
-                *ngIf="!email.pristine && email.errors && email.errors.required"
-                [ngStyle]="{'color': 'red'}"
-                align="start">
-                Email required
-              </md-hint>
-              <md-hint *ngIf="!email.pristine && email.errors && email.errors.pattern"
-                       [ngStyle]="{'color': 'red'}"
-                       align="start">
-                Email invalid
-              </md-hint>
-            </md-input-container>
-          </td>
-          <button type="submit"
-                  md-icon-button
-                  [color]="'primary'"
-                  [disabled]="!userForm.form.valid">
-            <fa [name]="'floppy-o'"></fa>
-          </button>
-          <button type="button"
-                  md-icon-button
-                  [color]="'warn'"
-                  (click)="creatingNewUser(false)">
-            <fa [name]="'ban'"></fa>
-          </button>
-        </tr>
-      </table>
+               pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+               placeholder="Email"
+               [(ngModel)]="user.email">
+        <md-hint
+          *ngIf="!email.pristine && email.errors?.required"
+          [ngStyle]="{'color': 'red'}"
+          align="start">
+          Email required
+        </md-hint>
+        <md-hint *ngIf="!email.pristine && email.errors?.pattern"
+                 [ngStyle]="{'color': 'red'}"
+                 align="start">
+          Email invalid
+        </md-hint>
+      </md-input-container>
+
+      <md-input-container >
+        <input name="password" #password="ngModel" mdInput
+               type="password"
+               required
+               minlength="6"
+               placeholder="Password"
+               [(ngModel)]="user.password">
+        <md-hint
+          *ngIf="!password.pristine && password.errors?.required"
+          [ngStyle]="{'color': 'red'}"
+          align="start">
+          Password required
+        </md-hint>
+        <md-hint
+          *ngIf="!password.pristine && password.errors?.minlength"
+          [ngStyle]="{'color': 'red'}"
+          align="start">
+          Password to short (min. 6 characters)
+        </md-hint>
+      </md-input-container>
+      <md-input-container >
+        <input name="repeatPassword" #repeatPassword="ngModel"
+               mdInput
+               validateEqualTo="password"
+               type="password"
+               required
+               placeholder="Confirm Password"
+               [(ngModel)]="user.confirmPassword">
+      <md-hint
+          *ngIf="!repeatPassword.pristine && repeatPassword.errors?.required"
+          [ngStyle]="{'color': 'red'}"
+          align="start">
+          Confirmation of Password is required
+        </md-hint>
+        <md-hint
+          *ngIf="!repeatPassword.pristine && !repeatPassword.errors?.required && repeatPassword.errors?.validateEqual"
+          [ngStyle]="{'color': 'red'}"
+          align="start">
+          Password and Password Confirmation does not contain the same value
+        </md-hint>
+      </md-input-container>
     </md-card-content>
+    <md-card-actions fxLayoutAlign="end"  [fxLayout]="'row'">
+      <button type="button"
+              md-icon-button
+              [color]="'warn'"
+              (click)="creatingNewUser(false)">
+        <fa [name]="'ban'"></fa>
+      </button>
+      <button type="submit"
+              md-icon-button
+              [color]="'primary'"
+              [disabled]="!userForm.form.valid">
+        <fa [name]="'floppy-o'"></fa>
+      </button>
+    </md-card-actions>
   </md-card>
 </form>
 <div *ngIf="!creatingUser">

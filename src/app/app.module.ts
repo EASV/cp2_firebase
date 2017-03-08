@@ -21,6 +21,7 @@ import { UsersComponent } from './users/users/users.component';
 import { UserListComponent } from './users/user-list/user-list.component';
 import { UserComponent } from './users/user/user.component';
 import { UserCreateComponent } from './users/user-create/user-create.component';
+import EqualTextValidator from "./users/equal.validator";
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCnLMPbw7RLqpVSUj_o-6ibQuGAEvfyqac",
@@ -51,7 +52,8 @@ const appRoutes: Routes = [
     UsersComponent,
     UserListComponent,
     UserComponent,
-    UserCreateComponent
+    UserCreateComponent,
+    EqualTextValidator
   ],
   imports: [
     BrowserModule,

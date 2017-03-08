@@ -29,10 +29,12 @@ export class UserCreateComponent implements OnInit {
     this.creatingUserEvent.emit(value);
   }
 
-  onSubmit(){
-    this.createUserEvent.emit(this.user);
-    this.creatingUser = false;
-    this.clear();
+  onSubmit(userForm){
+    if(userForm.form.valid){
+      this.createUserEvent.emit(this.user);
+      this.creatingUser = false;
+      this.clear();
+    }
   }
 
   clear(){
