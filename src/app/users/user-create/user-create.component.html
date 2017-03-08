@@ -1,4 +1,7 @@
-<form *ngIf="creatingUser" class="example-form" (ngSubmit)="onSubmit()">
+<form *ngIf="creatingUser"
+      class="example-form"
+      (ngSubmit)="onSubmit()"
+      #userForm="ngForm">
   <md-card>
     <md-card-content>
       <h3><fa [name]="'user'"></fa> Add User</h3>
@@ -7,23 +10,50 @@
           <td>
             <md-input-container class="example-full-width">
               <input mdInput
+                     required
                      placeholder="Username"
                      [(ngModel)]="user.username"
-                     name="username">
+                     name="username"
+                     #username="ngModel">
+              <md-hint
+                *ngIf="!username.pristine && username.errors && username.errors.required"
+                [ngStyle]="{'color': 'red'}"
+                align="start">
+                Username required
+              </md-hint>
             </md-input-container>
+
           </td>
           <td>
             <md-input-container class="example-full-width">
-              <input mdInput
+              <input name="email" #email="ngModel" mdInput id="email"
+                     required
+                     pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
                      placeholder="Email"
-                     [(ngModel)]="user.email"
-                     name="email">
+                     [(ngModel)]="user.email">
+              <md-hint
+                *ngIf="!email.pristine && email.errors && email.errors.required"
+                [ngStyle]="{'color': 'red'}"
+                align="start">
+                Email required
+              </md-hint>
+              <md-hint *ngIf="!email.pristine && email.errors && email.errors.pattern"
+                       [ngStyle]="{'color': 'red'}"
+                       align="start">
+                Email invalid
+              </md-hint>
             </md-input-container>
           </td>
-          <button type="submit" md-icon-button [color]="'primary'">
+          <button type="submit"
+                  md-icon-button
+                  [color]="'primary'"
+                  [disabled]="!userForm.form.valid">
             <fa [name]="'floppy-o'"></fa>
           </button>
-          <button type="button" md-icon-button [color]="'warn'" (click)="creatingNewUser(false)">
+          <button type="button"
+                  md-icon-button
+                  [color]="'warn'"
+                  (click)="creatingNewUser(false)">
             <fa [name]="'ban'"></fa>
           </button>
         </tr>
