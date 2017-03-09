@@ -13,7 +13,19 @@ export class UserService {
   }
 
   createUser(user: User){
-    this.af.database.list('users').push(user);
+
+    //auth User and profile
+    this.af.auth.createUser({email: user.email, password: user.password})
+      .then(res => {
+        this.af.database.list('users').push({
+          email: user.email,
+          username: user.username,
+          uid: res.uid
+        });
+      })
+      .catch(err => {
+        console.error('err', err);
+      })
   }
 
   deleteUser($key : string){
