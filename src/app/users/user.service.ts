@@ -2,10 +2,13 @@ import { Injectable } from '@angular/core';
 import {AngularFire} from "angularfire2";
 import {Observable} from "rxjs";
 import {User} from "./user";
+import {firebaseConfig} from "../app.settings";
+let firebase = require("firebase");
 
 @Injectable()
 export class UserService {
 
+  app;
   constructor(private af : AngularFire) { }
 
   getUsers() : Observable<User[]>{
@@ -13,9 +16,11 @@ export class UserService {
   }
 
   createUser(user: User){
-
+    if(!this.app){
+      this.app = firebase.initializeApp(firebaseConfig,"secondary");
+    }
     //auth User and profile
-    this.af.auth.createUser({email: user.email, password: user.password})
+    this.app.auth().createUserWithEmailAndPassword(user.email, user.password)
       .then(res => {
         this.af.database.list('users').push({
           email: user.email,

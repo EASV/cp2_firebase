@@ -22,19 +22,7 @@ import { UserListComponent } from './users/user-list/user-list.component';
 import { UserComponent } from './users/user/user.component';
 import { UserCreateComponent } from './users/user-create/user-create.component';
 import EqualTextValidator from "./users/equal.validator";
-
-export const firebaseConfig = {
-  apiKey: "AIzaSyCnLMPbw7RLqpVSUj_o-6ibQuGAEvfyqac",
-  authDomain: "cp2rest.firebaseapp.com",
-  databaseURL: "https://cp2rest.firebaseio.com",
-  storageBucket: "cp2rest.appspot.com",
-  messagingSenderId: "646091707432"
-};
-
-export const firebarebaseLoginConfig =  {
-    provider: AuthProviders.Password,
-    method: AuthMethods.Password
-}
+import {firebaseConfig, firebarebaseLoginConfig} from "./app.settings";
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard]},
