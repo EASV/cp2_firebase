@@ -7,6 +7,10 @@
   <md-card>
     <md-card-content  [fxLayout]="'column'" fxFlex="400px">
       <h3><fa [name]="'user'"></fa> Create User</h3>
+      <p [ngStyle]="{'color': 'red', 'font-size':'75%'}"
+         align="start">
+        {{error}}
+      </p>
       <md-input-container >
         <input mdInput
                fxFlex="100"

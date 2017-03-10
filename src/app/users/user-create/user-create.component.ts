@@ -12,6 +12,8 @@ export class UserCreateComponent implements OnInit {
   creatingUser : boolean;
   @Input()
   user : User;
+  @Input()
+  error : string;
 
   @Output()
   creatingUserEvent = new EventEmitter<boolean>();

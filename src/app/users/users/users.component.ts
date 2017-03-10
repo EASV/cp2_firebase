@@ -15,6 +15,7 @@ export class UsersComponent implements OnInit {
 
   creatingUser : boolean;
   user : User;
+  error: string;
 
   constructor(private userService : UserService) { }
 
@@ -32,9 +33,10 @@ export class UsersComponent implements OnInit {
     this.userService.createUser(user)
       .subscribe(user => {
         this.creatingUser = false;
+        this.error = null;
       },
       err => {
-        console.log(err);
+        this.error = err.message;
       });
 
   }
