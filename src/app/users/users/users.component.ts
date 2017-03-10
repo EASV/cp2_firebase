@@ -14,11 +14,14 @@ export class UsersComponent implements OnInit {
   users : Observable<User[]>
 
   creatingUser : boolean;
+  user : User;
 
   constructor(private userService : UserService) { }
 
   ngOnInit() {
+    this.user = new User();
     this.users = this.userService.getUsers();
+
   }
 
   creatingUserEvent(value){
@@ -26,8 +29,14 @@ export class UsersComponent implements OnInit {
   }
 
   createUser(user){
-    this.userService.createUser(user);
-    this.creatingUser = false;
+    this.userService.createUser(user)
+      .subscribe(user => {
+        this.creatingUser = false;
+      },
+      err => {
+        console.log(err);
+      });
+
   }
 
 }

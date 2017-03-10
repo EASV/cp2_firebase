@@ -1,6 +1,8 @@
 <cp-top-toolbar [title]="'CP2 - Users'"></cp-top-toolbar>
 
 <cp-user-create
+  [creatingUser]="creatingUser"
+  [user]="user"
   (createUserEvent)="createUser($event)"
   (creatingUserEvent)="creatingUserEvent($event)"></cp-user-create>
 

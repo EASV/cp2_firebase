@@ -8,17 +8,18 @@ import {User} from "../user";
 })
 export class UserCreateComponent implements OnInit {
 
+  @Input()
+  creatingUser : boolean;
+  @Input()
+  user : User;
+
   @Output()
   creatingUserEvent = new EventEmitter<boolean>();
 
   @Output()
   createUserEvent = new EventEmitter<User>();
 
-  creatingUser : boolean;
-  user : User;
-
   constructor() {
-    this.clear();
   }
 
   ngOnInit() {
@@ -32,14 +33,7 @@ export class UserCreateComponent implements OnInit {
   onSubmit(userForm){
     if(userForm.form.valid){
       this.createUserEvent.emit(this.user);
-      this.creatingUser = false;
-      this.clear();
     }
   }
-
-  clear(){
-    this.user = new User();
-  }
-
 
 }

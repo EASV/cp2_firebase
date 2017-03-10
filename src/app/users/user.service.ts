@@ -15,25 +15,7 @@ export class UserService {
     return this.af.database.list('users');
   }
 
-  createUser(user: User) {
-    if(!this.app){
-      this.app = firebase.initializeApp(firebaseConfig,"secondary");
-    }
-    //auth User and profile
-    this.app.auth().createUserWithEmailAndPassword(user.email, user.password)
-      .then(res => {
-        this.af.database.list('users').push({
-          email: user.email,
-          username: user.username,
-          uid: res.uid
-        });
-      })
-      .catch(err => {
-        console.error('err', err);
-      })
-  }
-
-  createUserV2(user: User) : ReplaySubject<any> {
+  createUser(user: User) : ReplaySubject<any> {
     let resultSubject = new ReplaySubject(1);
 
     if(!this.app){
