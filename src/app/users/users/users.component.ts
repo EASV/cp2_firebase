@@ -26,6 +26,9 @@ export class UsersComponent implements OnInit {
   }
 
   creatingUserEvent(value){
+    if(!value){
+      this.user = new User();
+    }
     this.creatingUser = value;
   }
 
@@ -34,6 +37,7 @@ export class UsersComponent implements OnInit {
       .subscribe(user => {
         this.creatingUser = false;
         this.error = null;
+        this.user = new User();
       },
       err => {
         this.error = err.message;
