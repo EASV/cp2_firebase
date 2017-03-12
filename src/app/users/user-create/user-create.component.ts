@@ -1,5 +1,9 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {User} from "../user";
+import {RoleService} from "../../roles/role.service";
+import {ObservableMedia} from "@angular/flex-layout";
+import {Role} from "../../roles/role";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'cp-user-create',
@@ -21,10 +25,13 @@ export class UserCreateComponent implements OnInit {
   @Output()
   createUserEvent = new EventEmitter<User>();
 
-  constructor() {
+  roles: Observable<Role[]>
+
+  constructor(private rs: RoleService) {
   }
 
   ngOnInit() {
+    this.roles = this.rs.getRoles();
   }
 
   creatingNewUser(value){

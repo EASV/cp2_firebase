@@ -23,6 +23,7 @@ import { UserComponent } from './users/user/user.component';
 import { UserCreateComponent } from './users/user-create/user-create.component';
 import EqualTextValidator from "./users/equal.validator";
 import {firebaseConfig, firebarebaseLoginConfig} from "./app.settings";
+import {RoleService} from "./roles/role.service";
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard]},
@@ -56,7 +57,8 @@ const appRoutes: Routes = [
   providers: [
     AuthService,
     UserService,
-    AuthGuard
+    AuthGuard,
+    RoleService
   ],
   bootstrap: [AppComponent]
 })

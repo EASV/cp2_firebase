@@ -116,3 +116,7 @@
     <fa [name]="'plus'"></fa>
   </button>
 </div>
+
+<div *ngFor="let role of roles | async">
+  {{role.name}}
+</div>
