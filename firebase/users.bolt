@@ -1,0 +1,24 @@
+function isUser (auth, userKey) {
+  return auth.uid == userKey;
+}
+
+function isAdmin (auth) {
+  return root.child('roles').child('admins').child(auth.uid).val() == true;
+}
+
+path /roles {
+  read() { isAdmin(auth) }
+  write() { isAdmin(auth) }
+}
+
+path /users {
+  read() { isAdmin(auth) }
+  write() { isAdmin(auth) }
+  index() { ["email"] }
+}
+
+path /users/{uid} {
+  read() { isUser(auth, uid) || isAdmin(auth) }
+  write() { isUser(auth, uid) || isAdmin(auth) }
+  index() { ["email"] }
+}

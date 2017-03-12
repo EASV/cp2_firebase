@@ -1,0 +1,27 @@
+{
+  "roles" : {
+    "admins" : {
+      "wfMO8OAemHPYuHguWuh6ee78FQy1" : true
+    },
+    "educators" : [ null, true ],
+    "students" : {
+      "UFXv5FueEVXEfFS2yMSUbtGdjvV2" : true
+    }
+  },
+  "users" : {
+    "UFXv5FueEVXEfFS2yMSUbtGdjvV2" : {
+      "profile" : {
+        "displayName" : "Plappy Von Dink",
+        "email" : "larsbilde@gmail.com",
+        "username" : "ljb"
+      }
+    },
+    "wfMO8OAemHPYuHguWuh6ee78FQy1" : {
+      "profile" : {
+        "displayName" : "Lars Bilde",
+        "email" : "ljb@easv.dk",
+        "username" : "labi"
+      }
+    }
+  }
+}
