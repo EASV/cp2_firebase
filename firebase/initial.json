@@ -1,0 +1,111 @@
+{
+  "roles": { // admin (RW)
+    "admins": {
+      "uid_u1": true
+    },
+    "educators": {
+    },
+    "students": {
+    }
+  },
+  "users": {  // admin (RW)
+    "uid_u1": {  // students (R), admin and educator (RW)
+      "profile":{ // students and admin (RW)
+        "username": "lbilde",
+        "displayName": "Lars Bilde",
+        "email": "ljb@easv.dk"
+      },
+      "educations": {
+        "uid_e1": true
+      },
+      "course": {
+        "uid_c1": true
+      },
+      "courseSessions": {
+        "uid_cs1": true
+      }
+    }
+  },
+  "educations": { //admin (RW)
+    "uid_e1": { //admin and educator-owners (RW)
+      "title": "Computer Science",
+      "from": "2012-10-21",
+      "to": "2015-03-21",
+      "description": "this is a CS education",
+      "users":{
+        "uid_u1":true
+      }
+    }
+  },
+  "courses": {  //admin (RW)
+    "uid_c1": { //admin and educator-owners (RW)
+      "title": "JS Web Apps",
+      "from": "2012-10-21",
+      "to": "2013-04-21",
+      "description": "About writing web apps",
+      "sessions": {
+        "uid_cs1": true
+      },
+      "users":{
+        "uid_u1":true
+      }
+    }
+  },
+  "courseSessions": { //admin (RW)
+    "uid_cs1": { //admin and educator-owners (RW)
+      "title": "Week 1 day 1",
+      "date": "2012-10-21",
+      "from": "8.00",
+      "to": "11.30",
+      "assignments": {
+        "uid_a1": true
+      },
+      "literature": {
+        "uid_l1": true
+      },
+      "videos": {
+        "uid_v1": true
+      },
+      "users":{
+        "uid_u1":true
+      },
+      "attendance":{
+        "uid_u1":true
+      }
+    }
+  },
+  "assignments": { //admin (RW)
+    "uid_a1": { //admin and educator-owners (RW)
+      "title": "Create component in Angular2",
+      "descr": "Go and create a component",
+      "completedBy": {
+        "uid_u1": {
+          "date": "2012-10-20"
+        }
+      }
+    }
+  },
+  "literature": {  //admin (RW)
+    "uid_l1": {  //admin and educator-owners (RW)
+      "title": "Read chapter 10 in 'Ts for dummies'",
+      "descr": "Explanation about let and var",
+      "readBy": {
+        "uid_u1": {
+          "date": "2012-10-20"
+        }
+      }
+    }
+  },
+  "videos": {  //admin (RW)
+    "uid_l1": { //admin and educator-owners (RW)
+      "title": "JS Web Apps levinisisinessness",
+      "descr": "A small introduction to levinisisinessness",
+      "url" : "www.levinisisinessness.huh",
+      "watchedBy": {
+        "uid_u1": {
+          "date": "2012-10-20"
+        }
+      }
+    }
+  }
+}

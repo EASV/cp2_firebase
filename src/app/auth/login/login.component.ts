@@ -27,7 +27,6 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
     this.request = this.auth
       .login(user.email, user.password)
-      .delay(1000)
       .subscribe(
         //Is the data
         (lUser) => {

@@ -21,14 +21,13 @@ export class UserService {
     if(!this.app){
       this.app = firebase.initializeApp(firebaseConfig,"secondary");
     }
-    this.app.auth().createUserWithEmailAndPassword(user.email, user.password)
+    this.app.auth().createUserWithEmailAndPassword(user.profile.email, user.password)
       .then(fbAuth => {
-        this.af.database.list('users').push({
-          email: user.email,
-          username: user.username,
-          uid: fbAuth.uid
+        this.af.database.object(`users/${fbAuth.uid}`).set({
+          email: user.profile.email,
+          username: user.profile.username
         })
-          .then(user => {
+          .then(() => {
             resultSubject.next(user);
           })
           .catch(err => {
@@ -42,6 +41,8 @@ export class UserService {
   }
 
   deleteUser($key : string){
-    this.af.database.list('users').remove($key);
+    if($key !== undefined){
+      this.af.database.list('users').remove($key);
+    }
   }
 }
