@@ -4,6 +4,7 @@ import {User} from "../user";
 import {UserService} from "../user.service";
 import {log} from "util";
 import {Profile} from "../profile";
+import {Role} from "../../roles/role";
 
 @Component({
   selector: 'cp-users',
@@ -23,6 +24,7 @@ export class UsersComponent implements OnInit {
   ngOnInit() {
     this.user = new User();
     this.user.profile = new Profile();
+    this.user.role = new Role();
     this.users = this.userService.getUsers();
 
   }

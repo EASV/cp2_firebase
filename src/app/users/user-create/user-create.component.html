@@ -52,7 +52,11 @@
           Email invalid
         </md-hint>
       </md-input-container>
-
+      <md-select placeholder="Role" [(ngModel)]="user.role" name="role">
+        <md-option *ngFor="let role of roles" [value]="role">
+          {{role.name}}
+        </md-option>
+      </md-select>
       <md-input-container >
         <input name="password" #password="ngModel" mdInput
                type="password"
@@ -117,6 +121,4 @@
   </button>
 </div>
 
-<div *ngFor="let role of roles | async">
-  {{role.name}}
-</div>
+
