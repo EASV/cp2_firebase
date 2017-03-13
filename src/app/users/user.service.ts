@@ -24,8 +24,16 @@ export class UserService {
     this.app.auth().createUserWithEmailAndPassword(user.profile.email, user.password)
       .then(fbAuth => {
         this.af.database.object(`users/${fbAuth.uid}`).set({
-          email: user.profile.email,
-          username: user.profile.username
+          profile:{
+            email: user.profile.email,
+            username: user.profile.username
+          },
+          role:{
+            id: user.role.$key,
+            name: user.role.name
+          }
+
+
         })
           .then(() => {
             resultSubject.next(user);
