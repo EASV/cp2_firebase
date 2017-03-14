@@ -23,7 +23,9 @@ export class UserService {
     }
     this.app.auth().createUserWithEmailAndPassword(user.profile.email, user.password)
       .then(fbAuth => {
-        this.af.database.object(`users/${fbAuth.uid}`).set({
+        var updatedUserData = {};
+        updatedUserData[`roles/${user.role.$key}/users/${fbAuth.uid}`] = true;
+        updatedUserData[`users/${fbAuth.uid}`] = {
           profile:{
             email: user.profile.email,
             username: user.profile.username
@@ -32,9 +34,8 @@ export class UserService {
             id: user.role.$key,
             name: user.role.name
           }
-
-
-        })
+        };
+        this.af.database.object('').update(updatedUserData)
           .then(() => {
             resultSubject.next(user);
           })
@@ -49,6 +50,7 @@ export class UserService {
   }
 
   deleteUser($key : string){
+
     if($key !== undefined){
       this.af.database.list('users').remove($key);
     }
