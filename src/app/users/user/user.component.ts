@@ -12,7 +12,7 @@ export class UserComponent implements OnInit {
   user : User;
 
   @Output()
-  deleteUserEvent = new EventEmitter<string>();
+  deleteUserEvent = new EventEmitter<User>();
 
   validateDelete: boolean;
 
@@ -27,7 +27,7 @@ export class UserComponent implements OnInit {
 
   delete(){
     this.validateDelete = false;
-    this.deleteUserEvent.emit(this.user.$key);
+    this.deleteUserEvent.emit(this.user);
   }
 
 }

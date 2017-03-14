@@ -49,10 +49,20 @@ export class UserService {
     return resultSubject;
   }
 
-  deleteUser($key : string){
-
-    if($key !== undefined){
-      this.af.database.list('users').remove($key);
+  deleteUser(user : User) : ReplaySubject<any>{
+    let resultSubject = new ReplaySubject(1);
+    if(user !== undefined && user.$key !== undefined){
+      let dataToDelete = {};
+      dataToDelete[`users/${user.$key}`] = null;
+      dataToDelete[`roles/${user.role.id}/users/${user.$key}`] = null;
+      this.af.database.object('').update(dataToDelete)
+        .then(() => {
+          resultSubject.next(user);
+        })
+        .catch(err => {
+          resultSubject.error(err);
+        })
     }
+    return resultSubject;
   }
 }
