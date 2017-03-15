@@ -17,24 +17,15 @@ export class AuthService {
     return Observable.fromPromise(promise);
   }
 
-  currentUser() : Observable<FirebaseAuthState>{
-    return this.af.auth;
-  }
-
-  currentUser2() : Observable<User>{
+  currentUser() : Observable<User>{
     return this.af.auth
       .switchMap((authState: FirebaseAuthState) => authState ?
         this.userService.getUser(authState.uid) :
         Observable.of(null));
   }
 
-  /*isAuthenticated() : Observable<boolean>{
-    return this.af.auth
-      .map((authState: FirebaseAuthState) => !!authState);
-  }*/
-
   isAuthenticated(roles: string[]) : Observable<boolean>{
-    return this.currentUser2()
+    return this.currentUser()
       .switchMap(user =>
         roles ?
         Observable.of(!!user && roles.indexOf(user.role.name) > -1) :
