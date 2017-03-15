@@ -15,6 +15,10 @@ export class UserService {
     return this.af.database.list('users');
   }
 
+  getUser($key: string) : Observable<User>{
+    return this.af.database.object('users/' + $key);
+  }
+
   createUser(user: User) : ReplaySubject<any> {
     let resultSubject = new ReplaySubject(1);
 

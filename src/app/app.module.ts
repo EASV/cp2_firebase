@@ -26,8 +26,15 @@ import {firebaseConfig, firebarebaseLoginConfig} from "./app.settings";
 import {RoleService} from "./roles/role.service";
 
 const appRoutes: Routes = [
-  { path: '', component: HomeComponent, canActivate: [AuthGuard]},
-  { path: 'users', component: UsersComponent, canActivate: [AuthGuard]},
+  {
+    path: '',
+    component: HomeComponent
+  },
+  { path: 'users',
+    component: UsersComponent,
+    canActivate: [AuthGuard],
+    data: {roles: ['educator', 'admin']}
+  },
   { path: 'login', component: LoginComponent }
 ];
 
