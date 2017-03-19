@@ -2,8 +2,8 @@
   "roles" : {
     "-Kf3ZSrPpoQ7b21IsSlj" : {
       "name" : "admin",
-      "users": {
-        "wfMO8OAemHPYuHguWuh6ee78FQy1":true
+      "users" : {
+        "wfMO8OAemHPYuHguWuh6ee78FQy1" : true
       }
     },
     "-Kf3ZardwB5w9G6C_ExF" : {
@@ -11,17 +11,16 @@
     },
     "-Kf3ZdbzMpFa9U9z2jA-" : {
       "name" : "student",
-      "users": {
-        "UFXv5FueEVXEfFS2yMSUbtGdjvV2":true
+      "users" : {
+        "gk8mxdjuw3TX0XyeJAMoEcEB7oF3" : true
       }
     }
   },
   "users" : {
-    "UFXv5FueEVXEfFS2yMSUbtGdjvV2" : {
+    "gk8mxdjuw3TX0XyeJAMoEcEB7oF3" : {
       "profile" : {
-        "displayName" : "Plappy Von Dink",
-        "email" : "larsbilde@gmail.com",
-        "username" : "ljb"
+        "email" : "123@sdajds.dj",
+        "username" : "lbilde22"
       },
       "role" : {
         "id" : "-Kf3ZdbzMpFa9U9z2jA-",

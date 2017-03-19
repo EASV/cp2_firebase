@@ -1,9 +1,21 @@
-function isUser (auth, userKey) {
+function userRole(){
+   return prior(root).child('users').child(auth.uid).child('role').child('name').val();
+}
+
+function isOwner (auth, userKey) {
   return auth.uid == userKey;
 }
 
 function isAdmin (auth) {
-  return root.child('roles').child('admins').child(auth.uid).val() == true;
+  return userRole() == 'admin';
+}
+
+function isEducator (auth) {
+  return userRole() == 'educator';
+}
+
+function isStudent (auth) {
+  return userRole() == 'student';
 }
 
 path /roles {
@@ -14,11 +26,14 @@ path /roles {
 path /users {
   read() { isAdmin(auth) }
   write() { isAdmin(auth) }
-  index() { ["email"] }
 }
 
 path /users/{uid} {
-  read() { isUser(auth, uid) || isAdmin(auth) }
-  write() { isUser(auth, uid) || isAdmin(auth) }
-  index() { ["email"] }
+  read() { isOwner(auth, uid) }
+  write() { isAdmin(auth) }
+}
+
+path /users/{uid}/profile {
+   write() { isOwner(auth, uid) }
+   index() { ["email"] }
 }
