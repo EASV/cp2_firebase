@@ -11,13 +11,12 @@ import {UserService} from "../users/user.service";
 })
 export class HomeComponent implements OnInit {
   toolbarTitle = 'CP2';
-  users: Observable<User[]>;
 
-  constructor(private userService: UserService) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.users = this.userService.getUsers();
+
   }
 
 }

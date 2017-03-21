@@ -3,6 +3,7 @@ import {AngularFire} from "angularfire2";
 import {Observable, ReplaySubject} from "rxjs";
 import {User} from "./user";
 import {firebaseConfig} from "../app.settings";
+import {Profile} from "./profile";
 let firebase = require("firebase");
 
 @Injectable()
@@ -50,6 +51,28 @@ export class UserService {
       .catch(err => {
         resultSubject.error(err);
       });
+    return resultSubject;
+  }
+
+  updateUserProfile(user : User) : Observable<User>{
+    let resultSubject = new ReplaySubject(1);
+    if(user !== undefined &&
+      user.$key !== undefined){
+      let dataToUpdate = {};
+      dataToUpdate[`users/${user.$key}/profile/username`] =
+        user.profile.username;
+      dataToUpdate[`users/${user.$key}/profile/displayName`] =
+        user.profile.displayName;
+      //dataToUpdate[`users/${user.$key}/profile/email`] = user.profile.email;
+      this.af.database.object('')
+        .update(dataToUpdate)
+        .then(() => {
+          resultSubject.next(user);
+        })
+        .catch(err => {
+          resultSubject.error(err);
+        })
+    }
     return resultSubject;
   }
 
