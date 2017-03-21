@@ -68,10 +68,12 @@ export class UserService {
         .update(dataToUpdate)
         .then(() => {
           resultSubject.next(user);
+          resultSubject.complete();
         })
         .catch(err => {
           resultSubject.error(err);
-        })
+          resultSubject.complete();
+        });
     }
     return resultSubject;
   }

@@ -46,7 +46,7 @@
       <button type="submit"
               md-icon-button
               [color]="'primary'"
-              [disabled]="!userProfileForm.form.valid">
+              [disabled]="!userProfileForm.form.valid || !profileIsChanged()">
         <fa [name]="'floppy-o'"></fa>
       </button>
     </md-card-actions>
