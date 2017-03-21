@@ -13,6 +13,14 @@
       <fa [name]="'user'" size=1></fa>
       <span>{{user?.profile.email}}</span>
     </button>
+    <button md-menu-item routerLink="/profile">
+      <fa [name]="'address-card'" size=1></fa>
+      <span>Profile</span>
+    </button>
+    <button md-menu-item routerLink="/users">
+      <fa [name]="'users'" size=1></fa>
+      <span>Users</span>
+    </button>
     <button md-menu-item (click)="logout()">
       <fa [name]="'sign-out'" size=1></fa>
       <span>Sign out</span>
