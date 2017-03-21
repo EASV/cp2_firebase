@@ -24,11 +24,16 @@ import { UserCreateComponent } from './users/user-create/user-create.component';
 import EqualTextValidator from "./users/equal.validator";
 import {firebaseConfig, firebarebaseLoginConfig} from "./app.settings";
 import {RoleService} from "./roles/role.service";
+import { UserProfileComponent } from './users/user-profile/user-profile.component';
 
 const appRoutes: Routes = [
   {
     path: '',
     component: HomeComponent
+  },
+  { path: 'profile',
+    component: UserProfileComponent,
+    canActivate: [AuthGuard]
   },
   { path: 'users',
     component: UsersComponent,
@@ -49,7 +54,8 @@ const appRoutes: Routes = [
     UserListComponent,
     UserComponent,
     UserCreateComponent,
-    EqualTextValidator
+    EqualTextValidator,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
