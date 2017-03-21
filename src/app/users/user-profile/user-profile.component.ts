@@ -25,4 +25,13 @@ export class UserProfileComponent implements OnInit {
     this.user.profile = new Profile();
   }
 
+  onSubmit(userProfileForm){
+    if(userProfileForm.form.valid){
+      this.userService.updateUserProfile(this.user)
+        .subscribe(user => {
+        console.log('user', user);
+      });
+    }
+  }
+
 }
