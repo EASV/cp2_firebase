@@ -1,9 +1,10 @@
-<md-card style="min-height: 8em">
+<md-card [@flyInOut]="user.role.name === 'admin' ? 'adm' : user.role.name === 'educator' ? 'edu' : 'stud'" style="min-height: 8em">
   <md-card-content [fxLayout]="'row'">
     <div fxFlex="4em"><fa [name]="'user'" [size]=4></fa></div>
     <div fxFlex>
       <h3>{{user?.profile.username}}</h3>
       <h4>{{user?.profile.email}}</h4>
+      <h6>{{user?.role.name}}</h6>
     </div>
     <div *ngIf="!validateDelete" fxFlex="3em" [fxFlexAlign]="'end'" [fxLayout]="'column'">
       <button [color]="'warn'" md-icon-button (click)="deleteValidation(true)">

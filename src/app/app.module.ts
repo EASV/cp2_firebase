@@ -8,6 +8,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import 'hammerjs';
 import {AngularFireModule, AuthProviders, AuthMethods} from 'angularfire2';
+import { Ng2PageTransitionModule } from "ng2-page-transition"; // <-- import the module
 
 import { AppComponent } from './app.component';
 import { TopToolbarComponent } from './top-toolbar/top-toolbar.component';
@@ -25,6 +26,7 @@ import EqualTextValidator from "./users/equal.validator";
 import {firebaseConfig, firebarebaseLoginConfig} from "./app.settings";
 import {RoleService} from "./roles/role.service";
 import { UserProfileComponent } from './users/user-profile/user-profile.component';
+import {UploadComponent} from "./storage/upload.component";
 
 const appRoutes: Routes = [
   {
@@ -55,7 +57,8 @@ const appRoutes: Routes = [
     UserComponent,
     UserCreateComponent,
     EqualTextValidator,
-    UserProfileComponent
+    UserProfileComponent,
+    UploadComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +68,8 @@ const appRoutes: Routes = [
     MaterialModule,
     FlexLayoutModule,
     RouterModule.forRoot(appRoutes),
-    AngularFireModule.initializeApp(firebaseConfig, firebarebaseLoginConfig)
+    AngularFireModule.initializeApp(firebaseConfig, firebarebaseLoginConfig),
+    Ng2PageTransitionModule
   ],
   providers: [
     AuthService,
