@@ -1,3 +1,5 @@
 <div [fxLayout]="'row'" fxLayoutWrap>
-  <cp-user [fxFlex] ="50"  *ngFor="let user of users | async" [user]="user" (deleteUserEvent)="deleteUser($event)" ></cp-user>
+  <cp-user [@flyInOut]="user.role.name === 'admin' ? 'adm' : user.role.name === 'educator' ? 'edu' : 'stud'"
+           [fxFlex] ="50"  *ngFor="let user of users | async"
+           [user]="user" (deleteUserEvent)="deleteUser($event)" ></cp-user>
 </div>
