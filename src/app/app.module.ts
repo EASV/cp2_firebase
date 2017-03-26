@@ -26,7 +26,6 @@ import EqualTextValidator from "./users/equal.validator";
 import {firebaseConfig, firebarebaseLoginConfig} from "./app.settings";
 import {RoleService} from "./roles/role.service";
 import { UserProfileComponent } from './users/user-profile/user-profile.component';
-import {UploadComponent} from "./storage/upload.component";
 
 const appRoutes: Routes = [
   {
@@ -57,8 +56,7 @@ const appRoutes: Routes = [
     UserComponent,
     UserCreateComponent,
     EqualTextValidator,
-    UserProfileComponent,
-    UploadComponent
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
