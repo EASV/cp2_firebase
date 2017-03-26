@@ -22,7 +22,7 @@ import { UsersComponent } from './users/users/users.component';
 import { UserListComponent } from './users/user-list/user-list.component';
 import { UserComponent } from './users/user/user.component';
 import { UserCreateComponent } from './users/user-create/user-create.component';
-import EqualTextValidator from "./users/equal.validator";
+import {EqualTextValidator} from "./users/equal.validator";
 import {firebaseConfig, firebarebaseLoginConfig} from "./app.settings";
 import {RoleService} from "./roles/role.service";
 import { UserProfileComponent } from './users/user-profile/user-profile.component';
