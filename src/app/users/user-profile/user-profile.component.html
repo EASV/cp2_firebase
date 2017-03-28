@@ -1,48 +1,57 @@
 <cp-top-toolbar [title]="'CP2 - Profile'"></cp-top-toolbar>
+
 <form (ngSubmit)="onSubmit(userProfileForm)"
       #userProfileForm="ngForm"
       fxFlexFill [fxLayout]="'row'"
       fxLayoutAlign="center start">
   <md-card>
-    <md-card-content  [fxLayout]="'column'" fxFlex="400px">
-      <h3><fa [name]="'address-card'"></fa> Update User profile</h3>
-      <p [ngStyle]="{'color': 'red', 'font-size':'75%'}"
-         align="start">
-        {{error}}
-      </p>
-      <md-input-container >
-        <input mdInput
-               fxFlex="100"
-               required
-               minlength="3"
-               placeholder="Username"
-               [(ngModel)]="user.profile.username"
-               name="username"
-               #username="ngModel">
-        <md-hint
-          *ngIf="!username.pristine && username.errors?.required"
-          [ngStyle]="{'color': 'red'}"
-          align="start">
-          Username required
-        </md-hint>
-        <md-hint
-          *ngIf="!username.pristine && username.errors?.minlength"
-          [ngStyle]="{'color': 'red'}"
-          align="start">
-          Username to short (min. 3 characters)
-        </md-hint>
-      </md-input-container>
-      <md-input-container >
-        <input mdInput
-               fxFlex="100"
-               minlength="3"
-               placeholder="Display Name"
-               [(ngModel)]="user.profile.displayName"
-               name="displayName"
-               #displayName="ngModel">
-      </md-input-container>
+    <md-card-content [fxLayout]="'column'" fxFlex="600px">
+      <div [fxLayout]="'column'">
+        <h3>User profile</h3>
+        <div fxFlex="100" [fxLayout]="'row'">
+          <img fxFlex="128px" src="http://placehold.it/128x128" class="profile-img">
+          <div fxFlex="100"
+               [fxLayout]="'column'">
+            <p [ngStyle]="{'color': 'red', 'font-size':'75%'}" align="start">
+                {{error}}
+            </p>
+            <md-input-container>
+              <input mdInput
+                     fxFlex="100"
+                     required
+                     minlength="3"
+                     placeholder="Username"
+                     [(ngModel)]="user.profile.username"
+                     name="username"
+                     #username="ngModel">
+              <md-hint
+                *ngIf="!username.pristine && username.errors?.required"
+                [ngStyle]="{'color': 'red'}"
+                align="start">
+                Username required
+              </md-hint>
+              <md-hint
+                *ngIf="!username.pristine && username.errors?.minlength"
+                [ngStyle]="{'color': 'red'}"
+                align="start">
+                Username to short (min. 3 characters)
+              </md-hint>
+            </md-input-container>
+            <md-input-container>
+              <input mdInput
+                     fxFlex="100"
+                     minlength="3"
+                     placeholder="Display Name"
+                     [(ngModel)]="user.profile.displayName"
+                     name="displayName"
+                     #displayName="ngModel">
+            </md-input-container>
+          </div>
+        </div>
+      </div>
+
     </md-card-content>
-    <md-card-actions fxLayoutAlign="end"  [fxLayout]="'row'">
+    <md-card-actions fxLayoutAlign="end" [fxLayout]="'row'">
       <button type="submit"
               md-icon-button
               [color]="'primary'"
