@@ -69,7 +69,7 @@
 
     </md-card-content>
     <md-card-actions fxLayoutAlign="end" [fxLayout]="'row'">
-      <button type="submit"
+      <button *ngIf="!changingImage" type="submit"
               md-icon-button
               [color]="'primary'"
               [disabled]="!userProfileForm.form.valid || !profileIsChanged()">

@@ -26,6 +26,7 @@ import {EqualTextValidator} from "./users/equal.validator";
 import {firebaseConfig, firebarebaseLoginConfig} from "./app.settings";
 import {RoleService} from "./roles/role.service";
 import { UserProfileComponent } from './users/user-profile/user-profile.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 const appRoutes: Routes = [
   {
@@ -67,7 +68,8 @@ const appRoutes: Routes = [
     FlexLayoutModule,
     RouterModule.forRoot(appRoutes),
     AngularFireModule.initializeApp(firebaseConfig, firebarebaseLoginConfig),
-    Ng2PageTransitionModule
+    Ng2PageTransitionModule,
+    BrowserAnimationsModule
   ],
   providers: [
     AuthService,
