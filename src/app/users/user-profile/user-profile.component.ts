@@ -12,6 +12,7 @@ import {MdSnackBar} from "@angular/material";
 })
 export class UserProfileComponent implements OnInit {
 
+  changingImage : boolean;
   initialProfile: Profile;
   user: User;
 
@@ -59,4 +60,13 @@ export class UserProfileComponent implements OnInit {
       || this.user.profile.username !== this.initialProfile.username
       || this.user.profile.email !== this.initialProfile.email;
   }
+
+  changingImageClick(){
+    this.changingImage = true;
+  }
+
+  saveNewImage(){
+    this.changingImage = false;
+  }
+
 }

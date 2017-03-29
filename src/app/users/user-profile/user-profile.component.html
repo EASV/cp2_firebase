@@ -6,10 +6,27 @@
       fxLayoutAlign="center start">
   <md-card>
     <md-card-content [fxLayout]="'column'" fxFlex="600px">
-      <div [fxLayout]="'column'">
+      <div *ngIf="changingImage" [fxLayout]="'column'">
+        <button
+          fxLayoutAlign="center center"
+          md-button
+          type="button"
+          (click)="saveNewImage()">Save</button>
+      </div>
+      <div *ngIf="!changingImage" [fxLayout]="'column'">
         <h3>User profile</h3>
         <div fxFlex="100" [fxLayout]="'row'">
-          <img fxFlex="128px" src="http://placehold.it/128x128" class="profile-img">
+          <div [fxLayout]="'column'">
+            <img
+              fxLayoutAlign="center center"
+              [src]="'http://placehold.it/128x128'"
+              class="profile-img">
+            <button
+              fxLayoutAlign="center center"
+              md-button
+              type="button"
+              (click)="changingImageClick()">Change Image</button>
+          </div>
           <div fxFlex="100"
                [fxLayout]="'column'">
             <p [ngStyle]="{'color': 'red', 'font-size':'75%'}" align="start">
