@@ -85,7 +85,9 @@ export class UserProfileComponent implements OnInit {
   }
 
   saveNewImage(){
-
+    if(this.data && this.data.image){
+      this.uploadService.uploadProfileImage(this.user, this.data.image.split(/,(.+)/)[1])
+     }
     this.changingImage = false;
   }
 
