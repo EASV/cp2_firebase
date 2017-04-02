@@ -7,6 +7,7 @@
   <md-card>
     <md-card-content [fxLayout]="'column'" fxFlex="600px">
       <div *ngIf="changingImage" [fxLayout]="'column'">
+        <img-cropper [image]="data" [settings]="cropperSettings"></img-cropper><br>
         <button
           fxLayoutAlign="center center"
           md-button

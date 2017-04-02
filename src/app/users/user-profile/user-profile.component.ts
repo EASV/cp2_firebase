@@ -4,6 +4,7 @@ import {User} from "../user";
 import {Profile} from "../profile";
 import {AuthService} from "../../auth/auth.service";
 import {MdSnackBar} from "@angular/material";
+import {CropperSettings} from "ng2-img-cropper";
 
 @Component({
   selector: 'cp-user-profile',
@@ -11,6 +12,9 @@ import {MdSnackBar} from "@angular/material";
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
+
+  data: any;
+  cropperSettings: CropperSettings;
 
   changingImage : boolean;
   initialProfile: Profile;
@@ -20,7 +24,18 @@ export class UserProfileComponent implements OnInit {
 
   constructor(private userService: UserService,
     private auth: AuthService,
-    public updateValidationBar: MdSnackBar) { }
+    public updateValidationBar: MdSnackBar) {
+    this.cropperSettings = new CropperSettings();
+    this.cropperSettings.width = 100;
+    this.cropperSettings.height = 100;
+    this.cropperSettings.croppedWidth =100;
+    this.cropperSettings.croppedHeight = 100;
+    this.cropperSettings.canvasWidth = 400;
+    this.cropperSettings.canvasHeight = 300;
+
+    this.data = {};
+
+  }
 
   ngOnInit() {
     let sub = this.auth.currentUser().subscribe(user => {

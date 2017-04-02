@@ -27,6 +27,7 @@ import {firebaseConfig, firebarebaseLoginConfig} from "./app.settings";
 import {RoleService} from "./roles/role.service";
 import { UserProfileComponent } from './users/user-profile/user-profile.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {ImageCropperComponent} from "ng2-img-cropper";
 
 const appRoutes: Routes = [
   {
@@ -57,7 +58,8 @@ const appRoutes: Routes = [
     UserComponent,
     UserCreateComponent,
     EqualTextValidator,
-    UserProfileComponent
+    UserProfileComponent,
+    ImageCropperComponent
   ],
   imports: [
     BrowserModule,
