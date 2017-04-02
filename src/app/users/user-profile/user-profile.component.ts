@@ -32,6 +32,7 @@ export class UserProfileComponent implements OnInit {
     this.cropperSettings.croppedHeight = 100;
     this.cropperSettings.canvasWidth = 400;
     this.cropperSettings.canvasHeight = 300;
+    this.cropperSettings.rounded = true
 
     this.data = {};
 

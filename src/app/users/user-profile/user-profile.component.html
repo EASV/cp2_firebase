@@ -20,7 +20,7 @@
           <div [fxLayout]="'column'">
             <img
               fxLayoutAlign="center center"
-              [src]="'http://placehold.it/128x128'"
+              [src]="data && data.image ? data.image :  'http://placehold.it/128x128'"
               class="profile-img">
             <button
               fxLayoutAlign="center center"
