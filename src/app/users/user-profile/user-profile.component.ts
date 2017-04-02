@@ -45,7 +45,13 @@ export class UserProfileComponent implements OnInit {
     let sub = this.auth.currentUser().subscribe(user => {
       this.user = user;
       this.cloneInitial(this.user.profile);
+
+      this.uploadService.getProfileImage(this.user).subscribe(image => {
+        this.data = image;
+      });
+
       sub.unsubscribe();
+
     });
     this.user = new User();
     this.user.profile = new Profile();

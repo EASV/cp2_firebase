@@ -33,7 +33,7 @@ export class UploadService {
           console.log('one', image);
           var pathReference = storage.ref(image.path);
           pathReference.getDownloadURL().then(url => {
-            let result = {$key: image.$key, downloadURL: url, path: image.path, filename: image.filename};
+            let result = {image: url, path: image.path, filename: image.filename};
             console.log('two', result);
             resultSubject.next(result);
             //this.profileImage = result;
