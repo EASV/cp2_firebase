@@ -5,6 +5,8 @@ import {Profile} from "../profile";
 import {AuthService} from "../../auth/auth.service";
 import {MdSnackBar} from "@angular/material";
 import {CropperSettings} from "ng2-img-cropper";
+import {UploadService} from "../../storage/upload.service";
+//data.image.split(/,(.+)/)[1]
 
 @Component({
   selector: 'cp-user-profile',
@@ -23,6 +25,7 @@ export class UserProfileComponent implements OnInit {
   error: string;
 
   constructor(private userService: UserService,
+    private uploadService: UploadService,
     private auth: AuthService,
     public updateValidationBar: MdSnackBar) {
     this.cropperSettings = new CropperSettings();
@@ -82,6 +85,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   saveNewImage(){
+
     this.changingImage = false;
   }
 

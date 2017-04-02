@@ -28,6 +28,7 @@ import {RoleService} from "./roles/role.service";
 import { UserProfileComponent } from './users/user-profile/user-profile.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ImageCropperComponent} from "ng2-img-cropper";
+import {UploadService} from "./storage/upload.service";
 
 const appRoutes: Routes = [
   {
@@ -77,7 +78,8 @@ const appRoutes: Routes = [
     AuthService,
     UserService,
     AuthGuard,
-    RoleService
+    RoleService,
+    UploadService
   ],
   bootstrap: [AppComponent]
 })
